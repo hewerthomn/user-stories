@@ -11,7 +11,7 @@
 
     <title>{{ isset($title) ? $title : 'My User Stories' }}</title>
 
-    <link href="/packages/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-paper.min.css" rel="stylesheet">
     <link href="/css/styles.css" rel="stylesheet">
   </head>
 
@@ -25,7 +25,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">User Stories</a>
+          <a class="navbar-brand" href="/">
+            <img src="/img/navbar-icon.png" alt="">
+          </a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
