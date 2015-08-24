@@ -21,7 +21,7 @@
                 Stories
 
                 <small class="text-muted" title="Total of stories">#{{ $project->stories()->count() }}</small>
-                <a href="{{ route('stories.create', ['project_id' => $project->id]) }}" class="btn btn-xs btn-success pull-right">Add new story</a>
+                <a href="{{ route('stories.create', ['project_id' => $project->id]) }}" class="btn btn-xs btn-success pull-right">Add story</a>
             </legend>
 
             @if ($project->stories === 0)
@@ -47,49 +47,46 @@
     </div>
     @if (isset($story))
     <div class="col-md-6">
-        <fieldset>
-            <legend>
+        <div class="panel panel-default-outline">
+            <div class="panel-heading h4">
                 <span class="text-muted">
                     {{ $story->uid }}
                 </span>
                 <span>
                     {{ $story->title }}
                 </span>
-            </legend>
-
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-2 text-right">
-                            <b>As a</b>
-                        </div>
-                        <div class="col-md-10">
-                            {{ $story->who }}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-2 text-right">
-                            <b>I want</b>
-                        </div>
-                        <div class="col-md-10">
-                            {{ $story->what }}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-2 text-right">
-                            <b>So that</b>
-                        </div>
-                        <div class="col-md-10">
-                            {{ $story->why }}
-                        </div>
-                    </div>
-
-                    <a href="{{ route('stories.edit', $story->id) }}" class="btn btn-link">Edit story</a>
-                </div>
             </div>
-        </fieldset>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2 text-right">
+                        <b>As a</b>
+                    </div>
+                    <div class="col-md-10">
+                        {{ $story->who }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2 text-right">
+                        <b>I want</b>
+                    </div>
+                    <div class="col-md-10">
+                        {{ $story->what }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2 text-right">
+                        <b>So that</b>
+                    </div>
+                    <div class="col-md-10">
+                        {{ $story->why }}
+                    </div>
+                </div>
+
+                <a href="{{ route('stories.edit', $story->id) }}">Edit story</a>
+            </div>
+        </div>
 
         <br>
 
@@ -101,14 +98,12 @@
             </legend>
             @foreach ($story->scenarios as $i => $scenario)
             <?php $i++; ?>
-            <div class="panel panel-default">
+            <div class="panel panel-default-outline">
+                <div class="panel-heading h5">
+                    <b>Scenario {{ $i }}:</b>
+                    {{ $scenario->title }}
+                </div>
                 <div class="panel-body">
-
-                    <h4>
-                        <b>Scenario {{ $i }}:</b>
-                        {{ $scenario->title }}
-                    </h4>
-
                     <div class="row">
                         <div class="col-md-2 text-right">
                             <b>Given</b>
