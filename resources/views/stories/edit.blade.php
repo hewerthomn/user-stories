@@ -14,14 +14,16 @@
 
 {!! Form::model($story, ['method' => 'PUT', 'route' => ['stories.update', $story->id]]) !!}
 
-<div class="form-group well well-sm">
-    <label for="project_id">Project</label>
-    <h2>
-        <a href="{{ route('projects.show', $story->project_id) }}">
-            {{ $story->project->name }}
-        </a>
-        <input type="hidden" name="project_id" value="{{ $story->project_id }}">
-    </h2>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <label for="project_id">Project</label>
+        <h2>
+            <a href="{{ route('projects.show', $story->project_id) }}">
+                {{ $story->project->name }}
+            </a>
+            <input type="hidden" name="project_id" value="{{ $story->project_id }}">
+        </h2>
+    </div>
 </div>
 <hr>
 

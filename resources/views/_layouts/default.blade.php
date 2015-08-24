@@ -9,10 +9,12 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>{{ isset($title) ? $title : 'My User Stories' }}</title>
+    <title>Stories {{ isset($title) ? ' | '.$title : '' }}</title>
 
     <link href="/css/bootstrap-paper.min.css" rel="stylesheet">
     <link href="/css/styles.css" rel="stylesheet">
+
+    @yield('styles')
   </head>
 
   <body>
@@ -49,5 +51,7 @@
     <script src="/packages/jquery/dist/jquery.min.js"></script>
     <script src="/packages/bootstrap//dist/js/bootstrap.min.js"></script>
     <script src="/js/scripts.js"></script>
+
+    @yield('scripts')
   </body>
 </html>

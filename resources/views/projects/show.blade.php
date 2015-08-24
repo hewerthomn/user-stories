@@ -6,7 +6,7 @@
 
     <a class="btn btn-link" href="{{ $project->url }}">{{ $project->url }}</a>
 
-    <a href="{{ route('projects.edit', $project->id) }}" class="btn btn-link pull-right">Edit project</a>
+    <a href="{{ route('projects.edit', $project->id) }}" class="btn-xs pull-right">Edit project</a>
 </h1>
 <small class="text-muted">
     {{ $project->about }}
@@ -32,7 +32,7 @@
 
             <div class="list-group">
                 @foreach ($project->stories as $s)
-                <a href="{{ route('projects.show', ['id' => $project->id, 'story_id' => $s->id]) }}" class="list-group-item">
+                <a href="{{ route('projects.show', ['id' => $project->id, 'story_id' => $s->id]) }}" class="h4 list-group-item">
                     <small class="text-muted">
                         {{ $s->uid }}
                     </small>
@@ -112,6 +112,7 @@
                             {{ $scenario->given }}
                         </div>
                     </div>
+                    <br>
 
                     <div class="row">
                         <div class="col-md-2 text-right">
@@ -121,6 +122,7 @@
                             {{ $scenario->when }}
                         </div>
                     </div>
+                    <br>
 
                     <div class="row">
                         <div class="col-md-2 text-right">
