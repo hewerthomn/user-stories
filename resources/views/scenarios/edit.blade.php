@@ -2,7 +2,15 @@
 
 @section('main')
 
-<h1>{{ $title }}</h1>
+<h1>
+    {{ $title }}
+
+    {!! Form::open(['class' => 'pull-right', 'method' => 'DELETE', 'route' => ['scenarios.destroy', $scenario->id]]) !!}
+        <button type="submit" class="btn btn-link" onclick="return confirm('Confirm delete scenario?');">
+            <span class="text-danger">Delete scenario</span>
+        </button>
+    {!! Form::close() !!}
+</h1>
 <hr>
 
 {!! Form::model($scenario, ['method' => 'PUT', 'route' => ['scenarios.update', $scenario->id]]) !!}

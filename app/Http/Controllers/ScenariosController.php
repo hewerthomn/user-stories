@@ -141,6 +141,22 @@ class ScenariosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $scenario = $this->scenario->findOrFail($id);
+            $story_id = $scenario->story_id;
+            $project_id = $scenario->story->project_id;
+
+            if ($scenario->delete())
+            {
+                Notification::success('Scenario deleted.');
+                return redirect()->route('projects.show', ['id' => $scenario->story->project_id, 'story_id' => $scenario->story_id]);
+            }
+
+            Notification::error('Failed to delete scenario #'.$id);
+        } catch (Exception $e) {
+            Notification::error($e->getMessage());
+        }
+
+        return back();
     }
 }
