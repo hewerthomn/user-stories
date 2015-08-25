@@ -29,10 +29,7 @@
 
 @include('stories._form')
 
-<hr>
-<div class="well well-sm">
-    <button type="submit" class="btn btn-lg btn-primary">Save story</button>
-</div>
+<button type="submit" class="btn btn-lg btn-block btn-primary">Save story</button>
 
 {!! Form::close() !!}
 

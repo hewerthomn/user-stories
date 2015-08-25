@@ -9,10 +9,7 @@
 
 @include('projects._form')
 
-<hr>
-<div class="well well-sm">
-    <button type="submit" class="btn btn-primary">Create project</button>
-</div>
+<button type="submit" class="btn btn-block btn-lg btn-primary">Create project</button>
 
 {!! Form::close() !!}
 
