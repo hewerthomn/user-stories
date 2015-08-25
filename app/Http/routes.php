@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', 'ProjectsController@index');
+Route::get('/', 'HomeController@dashboard');
 
 Route::resource('projects', 'ProjectsController');
 Route::resource('stories', 'StoriesController');
