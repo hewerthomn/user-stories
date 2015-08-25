@@ -73,6 +73,11 @@
       @yield('main')
     </div><!-- /.container -->
 
+    <footer class="container">
+      <hr>
+      <small><b>{{ date('Y') }}</b> - Stories</small>
+    </footer>
+
     <script src="/packages/jquery/dist/jquery.min.js"></script>
     <script src="/packages/bootstrap//dist/js/bootstrap.min.js"></script>
     <script src="/packages/handlebars/handlebars.min.js"></script>
