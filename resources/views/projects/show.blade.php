@@ -96,7 +96,7 @@
 
                 <a href="{{ route('scenarios.create', ['story_id' => $story->id]) }}" class="btn btn-xs btn-success pull-right">Add scenario</a>
             </legend>
-            @foreach ($story->scenarios as $i => $scenario)
+            @foreach ($story->scenarios()->orderBy('created_at', 'ASC')->get() as $i => $scenario)
             <?php $i++; ?>
             <?php $details = $scenario->details ?>
             <div class="panel panel-default-outline">
