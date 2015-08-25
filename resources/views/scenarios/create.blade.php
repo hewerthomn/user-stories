@@ -5,32 +5,30 @@
 <h1>{{ $title }}</h1>
 <hr>
 
-{!! Form::open(['route' => 'scenarios.store']) !!}
-
 <div class="panel panel-default">
     <div class="panel-body">
-        <div class="row">
-            <div class="col-md-6">
-                <label for="story_id">Story</label>
-                <h3>
-                    <small>{{ $story->uid }}</small>
+        <label for="project_id">Project</label>
+        <h3>
+            <small>#{{ $story->project->id }}</small>
+            <a href="{{ route('projects.show', $story->project->id) }}">
+                {{ $story->project->name }}
+            </a>
+        </h3>
+    </div>
+</div>
 
-                    <a href="{{ route('projects.show', ['id' => $story->project->id, 'story_id' => $story->id]) }}">
-                        {{ $story->title }}
-                    </a>
-                    {!! Form::hidden('story_id', $story->id) !!}
-                </h3>
-            </div>
-            <div class="col-md-6">
-                <label for="project_id">Project</label>
-                <h3>
-                    <small>#{{ $story->project->id }}</small>
-                    <a href="{{ route('projects.show', $story->project->id) }}">
-                        {{ $story->project->name }}
-                    </a>
-                </h3>
-            </div>
-        </div>
+{!! Form::open(['route' => 'scenarios.store']) !!}
+<div class="panel panel-default">
+    <div class="panel-body">
+        <label for="story_id">Story</label>
+        <h3>
+            <small>{{ $story->uid }}</small>
+
+            <a href="{{ route('projects.show', ['id' => $story->project->id, 'story_id' => $story->id]) }}">
+                {{ $story->title }}
+            </a>
+            {!! Form::hidden('story_id', $story->id) !!}
+        </h3>
     </div>
 </div>
 
@@ -40,4 +38,10 @@
 
 {!! Form::close() !!}
 
+@stop
+
+@section('scripts')
+
+@include('scenarios._templates')
+<script src="/js/scenarios/scripts.js"></script>
 @stop

@@ -65,6 +65,18 @@ class ScenariosController extends Controller
 
         if ($scenario->save())
         {
+            $details = $request->input('details');
+            if (count($details) > 0)
+            {
+                foreach ($details as $key => $detail)
+                {
+                    $details[$key]['scenario_id'] = $scenario->id;
+                    $details[$key]['created_at'] = new \DateTime;
+                    $details[$key]['updated_at'] = new \DateTime;
+                }
+                $this->scenarioDetail->insert($details);
+            }
+
             Notification::success('New scenario added!');
             return redirect()->route('projects.show', ['id' => $scenario->story->project_id, 'story_id' => $scenario->story_id]);
         }
@@ -115,15 +127,19 @@ class ScenariosController extends Controller
 
         if ($scenario->save())
         {
+            $scenario->details()->delete();
 
             $details = $request->input('details');
-            foreach ($details as $key => $detail) {
-                $details[$key]['scenario_id'] = $scenario->id;
-                $details[$key]['created_at'] = new \DateTime;
-                $details[$key]['updated_at'] = new \DateTime;
+            if (count($details) > 0)
+            {
+                foreach ($details as $key => $detail)
+                {
+                    $details[$key]['scenario_id'] = $scenario->id;
+                    $details[$key]['created_at'] = new \DateTime;
+                    $details[$key]['updated_at'] = new \DateTime;
+                }
+                $this->scenarioDetail->insert($details);
             }
-
-            $this->scenarioDetail->insert($details);
 
             Notification::success('Scenario edited!');
             return redirect()->route('projects.show', ['id' => $scenario->story->project_id, 'story_id' => $scenario->story_id]);

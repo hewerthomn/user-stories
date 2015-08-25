@@ -50,8 +50,9 @@
             if(confirm('Confirm?')) {
                 var $container = $this.parent().parent().parent();
                 var index = $container.data('i');
+                var situation = $container.data('situation');
 
-                $('.given-' + index).remove();
+                $('.'+situation+'-'+index).remove();
                 $container.remove();
             }
         }

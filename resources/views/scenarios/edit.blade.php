@@ -68,5 +68,5 @@
 @section('scripts')
 
 @include('scenarios._templates')
-<script src="/js/scenarios/edit.js"></script>
+<script src="/js/scenarios/scripts.js"></script>
 @stop
