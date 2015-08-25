@@ -12,6 +12,7 @@
     <title>Stories {{ isset($title) ? ' | '.$title : '' }}</title>
 
     <link href="/css/bootstrap-paper.min.css" rel="stylesheet">
+    <link href="/packages/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/styles.css" rel="stylesheet">
 
     @yield('styles')
@@ -36,6 +37,30 @@
             <li class="{{ Route::is('projects*') ? 'active' : '' }}">
               <a href="{{ route('projects.index') }}">Projects</a>
             </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-lg fa-plus"></i> Add
+              </a>
+              <ul class="dropdown-menu">
+                <li title="Create a new story"><a href="{{ route('stories.create') }}">New story</a></li>
+                <li role="separator" class="divider"></li>
+                <li title="Create a new project"><a href="{{ route('projects.create') }}">New project</a></li>
+                <li role="separator" class="divider"></li>
+                <li title="Report a bug"><a href="#/bugs/create">Report bug</a></li>
+              </ul>
+            </li>
+            <li title="Profile">
+              <a href="/profile">
+                Éverton
+                <img src="/img/navbar-icon.png" style="height:20px" alt="">
+              </a>
+            </li>
+            <li title="Logout"><a href="/auth/logout">
+              <i class="fa fa-lg fa-sign-out"></i>
+            </a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
