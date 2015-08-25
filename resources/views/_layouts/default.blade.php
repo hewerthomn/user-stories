@@ -50,6 +50,7 @@
 
     <script src="/packages/jquery/dist/jquery.min.js"></script>
     <script src="/packages/bootstrap//dist/js/bootstrap.min.js"></script>
+    <script src="/packages/handlebars/handlebars.min.js"></script>
     <script src="/js/scripts.js"></script>
 
     @yield('scripts')

@@ -7,10 +7,10 @@
 
 {!! Form::model($scenario, ['method' => 'PUT', 'route' => ['scenarios.update', $scenario->id]]) !!}
 
-<div class="panel panel-default">
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-6">
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
                 <label for="story_id">Story</label>
                 <h3>
                     <small>{{ $scenario->story->uid }}</small>
@@ -20,8 +20,22 @@
                     </a>
                     {!! Form::hidden('story_id', $scenario->story->id) !!}
                 </h3>
+                <p>
+                    <b>As a</b>
+                    <span>{{ $scenario->story->who }}</span>
+                    <br>
+                    <b>I want</b>
+                    <span>{{ $scenario->story->what }}</span>
+                    <br>
+                    <b>So then</b>
+                    <span>{{ $scenario->story->why }}</span>
+                </p>
             </div>
-            <div class="col-md-6">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
                 <label for="project_id">Project</label>
                 <h3>
                     <small>#{{ $scenario->story->project->id }}</small>
@@ -36,6 +50,7 @@
 
 @include('scenarios._form')
 
+
 <button type="submit" class="btn btn-lg btn-block btn-primary">Save scenario</button>
 
 {!! Form::close() !!}
@@ -43,5 +58,7 @@
 @stop
 
 @section('scripts')
+
+@include('scenarios._templates')
 <script src="/js/scenarios/edit.js"></script>
 @stop

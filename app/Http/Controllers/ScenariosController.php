@@ -6,15 +6,18 @@ use Illuminate\Http\Request;
 
 use App\Story;
 use App\Scenario;
+use App\ScenarioDetail;
 use App\Http\Requests\ScenarioStoreRequest;
+use App\Http\Requests\ScenarioUpdateRequest;
 use App\Http\Controllers\Controller;
 use Notification;
 
 class ScenariosController extends Controller
 {
-    public function __construct(Scenario $scenario, Story $story)
+    public function __construct(Scenario $scenario, Story $story, ScenarioDetail $scenarioDetail)
     {
         $this->scenario = $scenario;
+        $this->scenarioDetail = $scenarioDetail;
         $this->story = $story;
     }
 
@@ -102,9 +105,32 @@ class ScenariosController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(ScenarioUpdateRequest $request, $id)
     {
-        //
+        $scenario = $this->scenario->findOrFail($id);
+        $scenario->title = $request->input('title');
+        $scenario->given = $request->input('given');
+        $scenario->when = $request->input('when');
+        $scenario->then = $request->input('then');
+
+        if ($scenario->save())
+        {
+
+            $details = $request->input('details');
+            foreach ($details as $key => $detail) {
+                $details[$key]['scenario_id'] = $scenario->id;
+                $details[$key]['created_at'] = new \DateTime;
+                $details[$key]['updated_at'] = new \DateTime;
+            }
+
+            $this->scenarioDetail->insert($details);
+
+            Notification::success('Scenario edited!');
+            return redirect()->route('projects.show', ['id' => $scenario->story->project_id, 'story_id' => $scenario->story_id]);
+        }
+
+        Notification::error('Failed to edit scenario.');
+        return back()->withInput();
     }
 
     /**

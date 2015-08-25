@@ -12,4 +12,14 @@ class Scenario extends Model
     {
         return $this->belongsTo(Story::class);
     }
+
+    public function details()
+    {
+        return $this->hasMany(ScenarioDetail::class);
+    }
+
+    public function detailSituation($situation)
+    {
+        return $this->details()->where('situation', '=', $situation)->get();
+    }
 }

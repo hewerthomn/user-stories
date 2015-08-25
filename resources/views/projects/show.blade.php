@@ -98,40 +98,70 @@
             </legend>
             @foreach ($story->scenarios as $i => $scenario)
             <?php $i++; ?>
+            <?php $details = $scenario->details ?>
             <div class="panel panel-default-outline">
                 <div class="panel-heading h5">
                     <b>Scenario {{ $i }}:</b>
                     {{ $scenario->title }}
                 </div>
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-2 text-right">
-                            <b>Given</b>
-                        </div>
-                        <div class="col-md-10">
-                            {{ $scenario->given }}
-                        </div>
-                    </div>
+                    <table class="">
+                        <tr>
+                            <th class="col-md-2 text-right">Given</th>
+                            <td>{{ $scenario->given }}</td>
+                        </tr>
+
+                        @foreach ($scenario->detailSituation('given') as $d)
+                        <tr>
+                            <th class="col-md-2 text-right">
+                                {{ ucfirst($d->condition) }}
+                            </th>
+                            <td>
+                                {{ $d->detail }}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>
+
                     <br>
 
-                    <div class="row">
-                        <div class="col-md-2 text-right">
-                            <b>When</b>
-                        </div>
-                        <div class="col-md-10">
-                            {{ $scenario->when }}
-                        </div>
-                    </div>
+                    <table>
+                        <tr>
+                            <th class="col-md-2 text-right">When</th>
+                            <td>{{ $scenario->when }}</td>
+                        </tr>
+
+                        @foreach ($scenario->detailSituation('when') as $d)
+                        <tr>
+                            <th class="col-md-2 text-right">
+                                {{ ucfirst($d->condition) }}
+                            </th>
+                            <td>
+                                {{ $d->detail }}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>
+
                     <br>
 
-                    <div class="row">
-                        <div class="col-md-2 text-right">
-                            <b>Then</b>
-                        </div>
-                        <div class="col-md-10">
-                            {{ $scenario->then }}
-                        </div>
-                    </div>
+                    <table>
+                        <tr>
+                            <th class="col-md-2 text-right">Then</th>
+                            <td>{{ $scenario->then }}</td>
+                        </tr>
+
+                        @foreach ($scenario->detailSituation('then') as $d)
+                        <tr>
+                            <th class="col-md-2 text-right">
+                                {{ ucfirst($d->condition) }}
+                            </th>
+                            <td>
+                                {{ $d->detail }}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>
 
                     <a href="{{ route('scenarios.edit', $scenario->id) }}">Edit scenario</a>
                 </div>
