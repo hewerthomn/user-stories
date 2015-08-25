@@ -30,7 +30,7 @@
 
 <div class="list-group">
     @foreach ($projects as $p)
-    <a href="{{ route('projects.show', $p->id) }}" class="list-group-item col-md-6">
+    <a href="{{ route('projects.show', $p->id) }}" class="list-group-item">
         <h2>
             <small>#{{ $p->id }}</small>
             <span class="text-primary">{{ $p->name }}</span>
