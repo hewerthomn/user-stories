@@ -40,9 +40,14 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
+            <li title="Profile">
+              <a href="/profile">
+                {{ Auth::user()->name }}
+              </a>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-lg fa-plus"></i> Add
+                <i class="fa fa-lg fa-plus"></i>
               </a>
               <ul class="dropdown-menu">
                 <li title="Create a new story"><a href="{{ route('stories.create') }}">New story</a></li>
@@ -51,12 +56,6 @@
                 <li role="separator" class="divider"></li>
                 <li title="Report a bug"><a href="#/bugs/create">Report bug</a></li>
               </ul>
-            </li>
-            <li title="Profile">
-              <a href="/profile">
-                Éverton
-                <img src="/img/navbar-icon.png" style="height:20px" alt="">
-              </a>
             </li>
             <li title="Logout"><a href="/auth/logout">
               <i class="fa fa-lg fa-sign-out"></i>
