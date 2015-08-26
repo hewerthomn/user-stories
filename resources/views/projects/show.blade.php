@@ -57,32 +57,32 @@
                 </span>
             </div>
             <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-2 text-right">
-                        <b>As a</b>
-                    </div>
-                    <div class="col-md-10">
-                        {{ $story->who }}
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-2 text-right">
-                        <b>I want</b>
-                    </div>
-                    <div class="col-md-10">
-                        {{ $story->what }}
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-2 text-right">
-                        <b>So that</b>
-                    </div>
-                    <div class="col-md-10">
-                        {{ $story->why }}
-                    </div>
-                </div>
+                <table>
+                    <tr>
+                        <th class="col-xs-2 col-sm-2 text-right">
+                            As a
+                        </th>
+                        <td>
+                            {{ $story->who }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-sm-2 text-right">
+                            I want
+                        </th>
+                        <td>
+                            {{ $story->what }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-sm-2 text-right">
+                            So that
+                        </th>
+                        <td>
+                            {{ $story->why }}
+                        </td>
+                    </tr>
+                </table>
 
                 <a href="{{ route('stories.edit', $story->id) }}">Edit story</a>
             </div>
