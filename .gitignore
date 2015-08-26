@@ -3,4 +3,5 @@
 Homestead.yaml
 Homestead.json
 .env
+Envoy.blade.php
 /public/packages
