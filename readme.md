@@ -1,7 +1,8 @@
-## Laravel User Stories
+## Stories
 
-App to manage user stories.
+![Stories](resources/icon.png)
 
+App to manage your user stories.
 
 ### Contributing
 
