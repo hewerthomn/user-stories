@@ -2,52 +2,38 @@
 
 @section('main')
 
-<h1>
+<h3>
     {{ $title }}
 
     {!! Form::open(['class' => 'pull-right', 'method' => 'DELETE', 'route' => ['scenarios.destroy', $scenario->id]]) !!}
         <button type="submit" class="btn btn-link" onclick="return confirm('Confirm delete scenario?');">
-            <span class="text-danger">Delete scenario</span>
+            <i class="fa fa-trash-o text-danger"></i>
         </button>
     {!! Form::close() !!}
-</h1>
+</h3>
 <hr>
 
+{!! Form::model($scenario, ['method' => 'PUT', 'route' => ['scenarios.update', $scenario->id]]) !!}
 <div class="panel panel-default">
     <div class="panel-body">
-        <label for="project_id">Project</label>
-        <h3>
-            <small>#{{ $scenario->story->project->id }}</small>
+        <div class="form-group">
+            <label for="project_id">Project</label>
+            <br>
             <a href="{{ route('projects.show', $scenario->story->project->id) }}">
                 {{ $scenario->story->project->name }}
             </a>
-        </h3>
-    </div>
-</div>
+        </div>
 
-{!! Form::model($scenario, ['method' => 'PUT', 'route' => ['scenarios.update', $scenario->id]]) !!}
-
-<div class="panel panel-default">
-    <div class="panel-body">
-        <label for="story_id">Story</label>
-        <h3>
-            <small>{{ $scenario->story->uid }}</small>
-
-            <a href="{{ route('projects.show', ['id' => $scenario->story->project->id, 'story_id' => $scenario->story->id]) }}">
-                {{ $scenario->story->title }}
-            </a>
-            {!! Form::hidden('story_id', $scenario->story->id) !!}
-        </h3>
-        <p>
-            <b>As a</b>
-            <span>{{ $scenario->story->who }}</span>
-            <br>
-            <b>I want</b>
-            <span>{{ $scenario->story->what }}</span>
-            <br>
-            <b>So then</b>
-            <span>{{ $scenario->story->why }}</span>
-        </p>
+        <div class="form-group">
+            <label for="story_id">Story</label>
+            <p>
+                <b class="text-muted">{{ $scenario->story->uid }}</b>
+                <a href="{{ route('stories.show', ['id' => $scenario->story->id]) }}">
+                    {{ $scenario->story->title }}
+                </a>
+                {!! Form::hidden('story_id', $scenario->story->id) !!}
+            </p>
+        </div>
     </div>
 </div>
 

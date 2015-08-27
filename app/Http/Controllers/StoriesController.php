@@ -80,7 +80,10 @@ class StoriesController extends Controller
      */
     public function show($id)
     {
-        //
+        $v['title'] = 'Story #'.$id;
+        $v['story'] = $this->story->findOrFail($id);
+
+        return view('stories.show', $v);
     }
 
     /**

@@ -12,14 +12,12 @@
             };
 
             self.labels = {
-                given: $('#container-given-labels'),
                 when: $('#container-when-labels'),
                 then: $('#container-then-labels')
             };
 
             self.templates = {
-                conditional: Handlebars.compile($('#template-conditional').html()),
-                given: Handlebars.compile($('#template-given').html())
+                conditional: Handlebars.compile($('#template-conditional').html())
             };
 
         }
@@ -38,9 +36,6 @@
             var htmlConditional = self.templates.conditional(data);
             self.containers[situation].append(htmlConditional);
 
-            var htmlGiven = self.templates.given(data);
-            self.labels[situation].append(htmlGiven);
-
             counter++;
         }
 
@@ -50,9 +45,7 @@
             if(confirm('Confirm?')) {
                 var $container = $this.parent().parent().parent();
                 var index = $container.data('i');
-                var situation = $container.data('situation');
 
-                $('.'+situation+'-'+index).remove();
                 $container.remove();
             }
         }
@@ -67,7 +60,6 @@
             init: function() {
                 _setup();
                 _bindEvents();
-                console.info('Init!');
             }
         };
     };

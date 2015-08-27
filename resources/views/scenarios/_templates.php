@@ -2,15 +2,12 @@
 <div class="conditional" data-i="{{i}}" data-situation="{{situation}}">
     <input type="hidden" name="details[{{i}}][condition]" value="{{condition}}">
     <input type="hidden" name="details[{{i}}][situation]" value="{{situation}}">
+    <label class="given-{{i}}"><b>{{condition}}</b></label>
     <div class="input-group">
-        <input type="text" class="form-control" name="details[{{i}}][detail]" required>
+        <input type="text" class="form-control" name="details[{{i}}][detail]" placeholder="{{situation}} {{condition}}" required>
         <div class="input-group-btn">
-            <button type="button" class="btn btn-sm btn-default text-danger btn-remove-conditional">Remove</button>
+            <button type="button" class="btn btn-xs btn-default btn-remove-conditional"><i class="fa fa-trash-o text-danger"></i></button>
         </div>
     </div>
 </div>
-</script>
-
-<script id="template-given" type="text/x-handlebars-template">
-<div class="given-{{i}}"><br>{{condition}}</div>
 </script>

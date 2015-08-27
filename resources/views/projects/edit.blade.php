@@ -2,7 +2,7 @@
 
 @section('main')
 
-<h1>{{ $title }}</h1>
+<h3>{{ $title }}</h3>
 <hr>
 
 {!! Form::model($project, ['method' => 'PUT', 'route' => ['projects.update', $project->id]]) !!}

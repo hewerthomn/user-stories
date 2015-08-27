@@ -2,33 +2,26 @@
 
 @section('main')
 
-<h1>{{ $title }}</h1>
+<h3>{{ $title }}</h3>
 <hr>
-
-<div class="panel panel-default">
-    <div class="panel-body">
-        <label for="project_id">Project</label>
-        <h3>
-            <small>#{{ $story->project->id }}</small>
-            <a href="{{ route('projects.show', $story->project->id) }}">
-                {{ $story->project->name }}
-            </a>
-        </h3>
-    </div>
-</div>
 
 {!! Form::open(['route' => 'scenarios.store']) !!}
 <div class="panel panel-default">
     <div class="panel-body">
-        <label for="story_id">Story</label>
-        <h3>
-            <small>{{ $story->uid }}</small>
-
-            <a href="{{ route('projects.show', ['id' => $story->project->id, 'story_id' => $story->id]) }}">
+        <div class="form-group">
+            <label for="project_id">Project</label><br>
+            <a href="{{ route('projects.show', $story->project->id) }}">
+                {{ $story->project->name }}
+            </a>
+        </div>
+        <div class="form-group">
+            <label for="story_id">Story</label><br>
+            <b class="text-muted">{{ $story->uid }}</b>
+            <a href="{{ route('stories.show', ['id' => $story->id]) }}">
                 {{ $story->title }}
             </a>
             {!! Form::hidden('story_id', $story->id) !!}
-        </h3>
+        </div>
     </div>
 </div>
 

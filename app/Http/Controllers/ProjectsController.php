@@ -40,7 +40,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        $v['title'] = 'Create new project';
+        $v['title'] = 'Create project';
 
         return view('projects.create', $v);
     }
