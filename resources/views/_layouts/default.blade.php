@@ -40,14 +40,10 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li title="Profile">
-              <a href="/profile">
-                {{ Auth::user()->name }}
-              </a>
-            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-lg fa-plus"></i>
+                <span class="visible-xs-inline">Create</span>
               </a>
               <ul class="dropdown-menu">
                 <li title="Create a new story"><a href="{{ route('stories.create') }}">New story</a></li>
@@ -57,8 +53,15 @@
                 <li title="Report a bug"><a href="#/bugs/create">Report bug</a></li>
               </ul>
             </li>
+            <li class="active profile" title="Profile">
+              <a href="/profile">
+                {{ Auth::user()->name }}
+                <img alt="image" class="gravatar img-rounded" src="{{ Gravatar::src(Auth::user()->email) }}">
+              </a>
+            </li>
             <li title="Logout"><a href="/auth/logout">
               <i class="fa fa-lg fa-sign-out"></i>
+              <span class="visible-xs-inline">Logout</span>
             </a></li>
           </ul>
         </div><!--/.nav-collapse -->

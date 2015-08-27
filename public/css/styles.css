@@ -5,3 +5,7 @@ body {
 .panel-default-outline .panel-heading {
     border-bottom: 1px solid #eee;
 }
+
+.navbar-nav .gravatar {
+    width: 30px;
+}
