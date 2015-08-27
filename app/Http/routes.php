@@ -12,4 +12,5 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('projects', 'ProjectsController');
     Route::resource('stories', 'StoriesController');
     Route::resource('scenarios', 'ScenariosController');
+    Route::resource('bugs', 'BugsController');
 });
