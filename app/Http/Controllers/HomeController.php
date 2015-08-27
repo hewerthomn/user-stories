@@ -20,4 +20,11 @@ class HomeController extends Controller
 
         return view('home.dashboard', $v);
     }
+
+    public function profile()
+    {
+        $v['title'] = 'Profile';
+
+        return view('home.profile', $v);
+    }
 }

@@ -149,6 +149,7 @@ return [
          */
         Illuminate\Html\HtmlServiceProvider::class,
         Krucas\Notification\NotificationServiceProvider::class,
+        Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class
     ],
 
     /*
@@ -200,6 +201,7 @@ return [
         'Form'          => Illuminate\Html\FormFacade::class,
         'HTML'          => Illuminate\Html\HtmlFacade::class,
         'Notification'  => Krucas\Notification\Facades\Notification::class,
+        'Gravatar'      => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
     ],
 
 ];
