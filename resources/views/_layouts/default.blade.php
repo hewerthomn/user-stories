@@ -53,16 +53,27 @@
                 <li title="Report a bug"><a href="#/bugs/create">Report bug</a></li>
               </ul>
             </li>
-            <li class="active profile" title="Profile">
-              <a href="/profile">
-                {{ Auth::user()->name }}
+            <li class="dropdown profile"  title="Profile and more">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <img alt="image" class="gravatar img-rounded" src="{{ Gravatar::src(Auth::user()->email) }}">
+                <span class="caret"></span>
               </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="/profile">
+                    <i class="fa fa-user"></i>
+                    Profile
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li title="Logout">
+                  <a href="/auth/logout">
+                    <i class="fa fa-sign-out"></i>
+                    Logout
+                  </a>
+                </li>
+              </ul>
             </li>
-            <li title="Logout"><a href="/auth/logout">
-              <i class="fa fa-lg fa-sign-out"></i>
-              <span class="visible-xs-inline">Logout</span>
-            </a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
