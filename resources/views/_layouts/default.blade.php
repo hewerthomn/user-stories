@@ -46,11 +46,26 @@
                 <span class="visible-xs-inline">Create</span>
               </a>
               <ul class="dropdown-menu">
-                <li title="Create a new story"><a href="{{ route('stories.create') }}">New story</a></li>
+                <li title="Create a new story">
+                  <a href="{{ route('stories.create') }}">
+                    <i class="fa fa-file-text-o"></i>
+                    New story
+                  </a>
+                </li>
                 <li role="separator" class="divider"></li>
-                <li title="Create a new project"><a href="{{ route('projects.create') }}">New project</a></li>
+                <li title="Create a new project">
+                  <a href="{{ route('projects.create') }}">
+                    <i class="fa fa-rocket"></i>
+                    New project
+                  </a>
+                </li>
                 <li role="separator" class="divider"></li>
-                <li title="Report a bug"><a href="#/bugs/create">Report bug</a></li>
+                <li title="Report a bug">
+                  <a href="#/bugs/create">
+                    <i class="fa fa-bug"></i>
+                    Report bug
+                  </a>
+                </li>
               </ul>
             </li>
             <li class="dropdown profile"  title="Profile and more">
