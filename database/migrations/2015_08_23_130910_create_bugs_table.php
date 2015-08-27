@@ -16,10 +16,10 @@ class CreateBugsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('version')->nullable();
-            $table->string('pre_conditions');
-            $table->string('steps_to_reproduce');
-            $table->string('description');
-            $table->string('desired_situation');
+            $table->text('pre_conditions');
+            $table->text('steps_to_reproduce');
+            $table->text('description');
+            $table->text('desired_situation');
             $table->timestamps();
 
             $table->integer('project_id')->unsigned()->index();
