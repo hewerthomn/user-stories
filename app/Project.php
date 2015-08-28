@@ -13,4 +13,9 @@ class Project extends Model
         return $this->hasMany(Story::class);
     }
 
+    public function bugs()
+    {
+        return $this->hasMany(Bug::class);
+    }
+
 }
