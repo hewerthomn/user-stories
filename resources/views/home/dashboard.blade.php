@@ -9,7 +9,6 @@
             {{ date('D') }}, {{ date('d') }}, {{ date('M') }}
             <br>
             <small>{{ date('Y') }}</small>
-
         </small>
     </small>
 </h4>
@@ -23,7 +22,7 @@
                 {{ $totalProjects }}
                 <br>
                 <i class="fa fa-rocket text-danger"></i>
-                <small>Projects</small>
+                <small>{{ trans('app.projects') }}</small>
                 <br><br>
             </div>
         </div>
@@ -35,7 +34,7 @@
                 {{ $totalStories }}
                 <br>
                 <i class="fa fa-file-text-o text-primary"></i>
-                <small>Stories</small>
+                <small>{{ trans('app.stories') }}</small>
                 <br><br>
             </div>
         </div>
@@ -47,7 +46,7 @@
                 {{ $totalBugs }}
                 <br>
                 <i class="fa fa-bug text-success"></i>
-                <small>Bugs</small>
+                <small>{{ trans('app.bugs') }}</small>
                 <br><br>
             </div>
         </div>

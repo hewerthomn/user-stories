@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Lang BR
+ */
+
+return [
+];
