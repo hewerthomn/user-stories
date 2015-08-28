@@ -6,7 +6,7 @@ Route::controllers([
 ]);
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('/', 'ProjectsController@index');
+    Route::get('/', 'HomeController@dashboard');
     Route::get('profile', 'HomeController@profile');
 
     Route::resource('projects', 'ProjectsController');
