@@ -27,9 +27,12 @@ class HomeController extends Controller
     public function dashboard()
     {
         $v['title'] = trans('app.dashboard');
+
         $v['totalProjects'] = $this->project->count();
         $v['totalStories'] = $this->story->count();
         $v['totalBugs'] = $this->bug->count();
+
+        $v['projects'] = $this->project->get();
 
         return view('home.dashboard', $v);
     }

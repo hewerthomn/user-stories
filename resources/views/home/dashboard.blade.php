@@ -15,7 +15,7 @@
 <hr>
 
 <div class="row">
-    <div class="col-xs-6 col-md-4">
+    <div class="col-xs-6 col-sm-4 col-md-4">
         <div class="panel panel-default">
             <div class="panel-body h5 text-center">
                 <br>
@@ -27,7 +27,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-6 col-md-4">
+    <div class="col-xs-6 col-sm-4 col-md-4">
         <div class="panel panel-default">
             <div class="panel-body h5 text-center">
                 <br>
@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-6 col-md-4">
+    <div class="col-xs-6 col-sm-4 col-md-4">
         <div class="panel panel-default">
             <div class="panel-body h5 text-center">
                 <br>
@@ -52,5 +52,19 @@
         </div>
     </div>
 </div>
+
+<fieldset>
+    <legend>{{ trans('app.projects') }}</legend>
+
+    <div class="list-group">
+        @foreach ($projects as $project)
+        <a href="{{ route('projects.show', $project->id) }}" class="list-group-item col-xs-6 col-md-6">
+            <span class="text-primary h6">
+                {{ $project->name }}
+            </span>
+        </a>
+        @endforeach
+    </div>
+</fieldset>
 
 @stop
