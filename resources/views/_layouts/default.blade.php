@@ -69,7 +69,7 @@
                 </li>
                 <li role="separator" class="divider"></li>
                 <li title="Report a bug">
-                  <a href="#/bugs/create">
+                  <a href="{{ route('bugs.create') }}">
                     <i class="fa fa-bug"></i>
                     Report bug
                   </a>
