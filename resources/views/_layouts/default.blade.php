@@ -42,6 +42,7 @@
           <ul class="nav navbar-nav navbar-left">
             <li>
               <a href="{{ route('projects.index') }}">
+                <i class="fa fa-rocket"></i>
                 Projects
               </a>
             </li>

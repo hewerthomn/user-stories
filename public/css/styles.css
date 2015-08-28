@@ -6,6 +6,10 @@ body {
     border-bottom: 1px solid #eee;
 }
 
+.navbar-brand img {
+    width: 40px;
+}
+
 .navbar-nav .gravatar {
-    width: 30px;
+    width: 20px;
 }
