@@ -24,6 +24,14 @@
                 <br>
                 <small>{{ trans('app.project.plural') }}</small>
             </h3>
+            <div class="btn-group btn-group-justified btn-group-sm">
+                <a href="{{ route('projects.index') }}" class="btn btn-default">
+                    {{ trans('app.project.plural') }}
+                </a>
+                <a href="{{ route('projects.create') }}" class="btn btn-success">
+                    {{ trans('app.project.new') }}
+                </a>
+            </div>
         </div>
     </div>
     <div class="col-xs-6 col-sm-4 col-md-4">
@@ -35,6 +43,11 @@
                 <br>
                 <small>{{ trans('app.story.plural') }}</small>
             </h3>
+            <div class="btn-group btn-group-justified btn-group-sm">
+                <a href="{{ route('stories.create') }}" class="btn btn-success">
+                    {{ trans('app.story.new') }}
+                </a>
+            </div>
         </div>
     </div>
     <div class="col-xs-6 col-sm-4 col-md-4">
@@ -46,6 +59,11 @@
                 <br>
                 <small>{{ trans('app.bug.plural') }}</small>
             </h3>
+            <div class="btn-group btn-group-justified btn-group-sm">
+                <a href="{{ route('bugs.create') }}" class="btn btn-success">
+                    {{ trans('app.bug.new') }}
+                </a>
+            </div>
         </div>
     </div>
 </div>
