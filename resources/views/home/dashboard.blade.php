@@ -15,13 +15,12 @@
 <hr>
 
 <div class="row">
-    <div class="col-xs-6 col-sm-4 col-md-4">
-        <div class="well text-center">
-            <i class="fa fa-rocket fa-4x text-danger"></i>
-            <br>
+    <div class="col-sm-4 col-md-4">
+        <div class="well well-sm text-center">
             <h3>
                 {{ $totalProjects }}
                 <br>
+                <i class="fa fa-rocket text-danger"></i>
                 <small>{{ trans('app.project.plural') }}</small>
             </h3>
             <div class="btn-group btn-group-justified btn-group-sm">
@@ -34,13 +33,12 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-6 col-sm-4 col-md-4">
-        <div class="well text-center">
-            <i class="fa fa-file-text-o fa-4x text-primary"></i>
-            <br>
+    <div class="col-sm-4 col-md-4">
+        <div class="well well-sm text-center">
             <h3>
                 {{ $totalStories }}
                 <br>
+                <i class="fa fa-file-text-o text-primary"></i>
                 <small>{{ trans('app.story.plural') }}</small>
             </h3>
             <div class="btn-group btn-group-justified btn-group-sm">
@@ -50,13 +48,12 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-6 col-sm-4 col-md-4">
-        <div class="well text-center">
-            <i class="fa fa-bug fa-4x text-success"></i>
-            <br>
+    <div class="col-sm-4 col-md-4">
+        <div class="well well-sm text-center">
             <h3>
                 {{ $totalBugs }}
                 <br>
+                <i class="fa fa-bug text-success"></i>
                 <small>{{ trans('app.bug.plural') }}</small>
             </h3>
             <div class="btn-group btn-group-justified btn-group-sm">
@@ -73,7 +70,7 @@
 
     <div class="list-group">
         @foreach ($projects as $project)
-        <a href="{{ route('projects.show', $project->id) }}" class="list-group-item col-xs-6 col-md-6">
+        <a href="{{ route('projects.show', $project->id) }}" class="list-group-item col-md-6">
             <span class="text-primary h6">
                 {{ $project->name }}
             </span>
