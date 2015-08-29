@@ -100,6 +100,7 @@
             <li class="dropdown profile"  title="trans('app.profileTitle')">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <img alt="image" class="gravatar img-rounded" src="{{ Gravatar::src(Auth::user()->email) }}">
+                <span class="visible-xs-inline">{{ Auth::user()->name }}</span>
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
