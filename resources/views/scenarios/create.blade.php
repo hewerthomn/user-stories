@@ -9,13 +9,17 @@
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="form-group">
-            <label for="project_id">Project</label><br>
+            <label for="project_id">
+                {{ trans('app.project.single') }}
+            </label><br>
             <a href="{{ route('projects.show', $story->project->id) }}">
                 {{ $story->project->name }}
             </a>
         </div>
         <div class="form-group">
-            <label for="story_id">Story</label><br>
+            <label for="story_id">
+                {{ trans('app.story.single') }}
+            </label><br>
             <b class="text-muted">{{ $story->uid }}</b>
             <a href="{{ route('stories.show', ['id' => $story->id]) }}">
                 {{ $story->title }}
@@ -27,7 +31,9 @@
 
 @include('scenarios._form')
 
-<button type="submit" class="btn btn-lg btn-block btn-primary">Add new scenario</button>
+<button type="submit" class="btn btn-lg btn-block btn-primary">
+    {{ trans('app.scenario.create') }}
+</button>
 
 {!! Form::close() !!}
 
@@ -36,5 +42,17 @@
 @section('scripts')
 
 @include('scenarios._templates')
+
 <script src="/js/scenarios/scripts.js"></script>
+<script>
+    var lang = {
+        confirm: '{{ trans('app.confirm') }}',
+        and: '{{ trans('app.scenario.and') }}',
+        or: '{{ trans('app.scenario.or') }}',
+        given: '{{ trans('app.scenario.given') }}',
+        when: '{{ trans('app.scenario.when') }}',
+        then: '{{ trans('app.scenario.then') }}',
+    };
+    new app().init(lang);
+</script>
 @stop

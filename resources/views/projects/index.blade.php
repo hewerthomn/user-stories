@@ -3,13 +3,15 @@
 @section('main')
 <h3>
     {{ $title }}
-    <a href="{{ route('projects.create') }}" class="btn btn-xs btn-success">Create new</a>
+    <a href="{{ route('projects.create') }}" class="btn btn-xs btn-success">
+        {{ trans('app.project.new') }}
+    </a>
 </h3>
 <br>
 
 @if ($projects->count() === 0)
 <h4 class="text-center text-warning">
-    None project to show.
+    {{ trans('app.project.empty') }}
 </h4>
 @endif
 

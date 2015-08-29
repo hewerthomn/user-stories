@@ -26,7 +26,7 @@ class BugsController extends Controller
      */
     public function create(Request $request)
     {
-        $v['title'] = 'Report bug';
+        $v['title'] = trans('app.bug.new');
         $v['projects'] = $this->project->lists('name', 'id');
 
         if ($request->has('project_id'))
@@ -57,10 +57,10 @@ class BugsController extends Controller
         try {
             if ($bug->save())
             {
-                Notification::success('Bug reported!');
+                Notification::success(trans('messages.bug.created'));
                 return redirect()->route('bugs.show', $bug->id);
             }
-            Notification::error('Failed to report bug.');
+            Notification::error(trans('messages.bug.createFailed'));
         } catch (Exception $e) {
             Notification::error($e->getMessage());
         }
@@ -90,7 +90,7 @@ class BugsController extends Controller
      */
     public function edit($id)
     {
-        $v['title'] = 'Edit bug';
+        $v['title'] = trans('app.bug.edit');
         $v['bug'] = $this->bug->find($id);
 
         return view('bugs.edit', $v);
@@ -116,10 +116,10 @@ class BugsController extends Controller
         try {
             if ($bug->save())
             {
-                Notification::success('Bug edited!');
+                Notification::success(trans('messages.bug.edited'));
                 return redirect()->route('bugs.show', $bug->id);
             }
-            Notification::error('Failed to edit bug.');
+            Notification::error(trans('messages.bug.editFailed'));
         } catch (Exception $e) {
             Notification::error($e->getMessage());
         }
@@ -140,11 +140,11 @@ class BugsController extends Controller
         try {
             if($bug->delete())
             {
-                Notification::success('Bug deleted!');
+                Notification::success(trans('messages.bug.deleted'));
                 return redirect()->route('projects.show', $request->input('project_id'));
             }
 
-            Notification::error('Failed to delete bug');
+            Notification::error(trans('messages.bug.createFailed'));
         } catch (Exception $e) {
             Notification::error($e->getMessage());
         }

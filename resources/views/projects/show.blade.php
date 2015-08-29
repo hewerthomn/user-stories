@@ -6,7 +6,9 @@
 
     <a class="btn btn-xs btn-link" href="{{ $project->url }}">{{ $project->url }}</a>
 
-    <a href="{{ route('projects.edit', $project->id) }}" class="btn-xs pull-right">Edit project</a>
+    <a href="{{ route('projects.edit', $project->id) }}" class="btn-xs pull-right">
+        {{ trans('app.project.edit') }}
+    </a>
 </h3>
 <small class="text-muted">
     {{ $project->about }}
@@ -17,26 +19,26 @@
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
         <a href="#stories" aria-controls="stories" role="tab" data-toggle="tab">
-            Stories
-            <small class="text-muted" title="Total of stories">#{{ $project->stories()->count() }}</small>
+            {{ trans('app.story.plural') }}
+            <small class="text-muted" title="Total">#{{ $project->stories()->count() }}</small>
         </a>
     </li>
     <li role="presentation">
         <a href="#bugs" aria-controls="bugs" role="tab" data-toggle="tab">
-            Bugs
-            <small class="text-muted" title="Total of bugs">#{{ $project->bugs()->count() }}</small>
+            {{ trans('app.bug.plural') }}
+            <small class="text-muted" title="Total">#{{ $project->bugs()->count() }}</small>
         </a>
     </li>
     <li role="presentation">
         <a href="{{ route('stories.create', ['project_id' => $project->id]) }}">
             <i class="fa fa-plus"></i>
-            Story
+            {{ trans('app.story.new') }}
         </a>
     </li>
     <li role="presentation">
         <a href="{{ route('bugs.create', ['project_id' => $project->id]) }}">
             <i class="fa fa-plus"></i>
-            Bug
+            {{ trans('app.bug.new') }}
         </a>
     </li>
 </ul>
@@ -46,9 +48,9 @@
 <!-- Tab panes -->
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="stories">
-        @if ($project->stories === 0)
+        @if ($project->stories()->count() === 0)
         <h3 class="text-warning text-center">
-            None story to show
+            {{ trans('app.story.empty') }}
         </h3>
         @endif
 
@@ -66,9 +68,9 @@
         </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="bugs">
-        @if ($project->bugs === 0)
+        @if ($project->bugs()->count() === 0)
         <h3 class="text-warning text-center">
-            None bug reported
+            {{ trans('app.bug.empty') }}
         </h3>
         @endif
 

@@ -39,7 +39,7 @@ class HomeController extends Controller
 
     public function profile()
     {
-        $v['title'] = 'Profile';
+        $v['title'] = trans('app.profile');
 
         return view('home.profile', $v);
     }

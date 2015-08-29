@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ Config::get('app.locale') }}">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,7 +43,7 @@
             <li>
               <a href="{{ route('projects.index') }}">
                 <i class="fa fa-rocket"></i>
-                Projects
+                {{ trans('app.project.plural') }}
               </a>
             </li>
           </ul>
@@ -51,42 +51,53 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-lg fa-plus"></i>
-                <span class="visible-xs-inline">Create</span>
+                <span class="visible-xs-inline">
+                  {{ trans('app.new') }}
+                </span>
               </a>
               <ul class="dropdown-menu">
                 <li title="Create a new story">
                   <a href="{{ route('stories.create') }}">
                     <i class="fa fa-file-text-o"></i>
-                    New story
+                    {{ trans('app.story.new') }}
                   </a>
                 </li>
                 <li role="separator" class="divider"></li>
                 <li title="Create a new project">
                   <a href="{{ route('projects.create') }}">
                     <i class="fa fa-rocket"></i>
-                    New project
+                    {{ trans('app.project.new') }}
                   </a>
                 </li>
                 <li role="separator" class="divider"></li>
                 <li title="Report a bug">
                   <a href="{{ route('bugs.create') }}">
                     <i class="fa fa-bug"></i>
-                    Report bug
+                    {{ trans('app.bug.new') }}
                   </a>
                 </li>
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" title="{{ trans('app.language') }}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-globe"></i>
+            <?php $langTitle = Config::get('languages')[Config::get('app.locale')] ?>
+              <a href="#" class="dropdown-toggle" title="{{ $langTitle }}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <img src="/img/flags/{{ Config::get('app.locale') }}.png" alt="">
+                <span class="visible-xs-inline">
+                  {{ trans('app.language') }}
+                </span>
               </a>
               <ul class="dropdown-menu">
                 @foreach (Config::get('languages') as $lang => $language)
-                <li class="{{ $lang == App::getLocale() ? 'active' : '' }}"><a href="/lang/{{ $lang }}">{{ $language }}</a></li>
+                <li class="{{ $lang == App::getLocale() ? 'active' : '' }}">
+                  <a href="/lang/{{ $lang }}">
+                    <img src="/img/flags/{{ $lang }}.png" alt="">
+                    {{ $language }}
+                  </a>
+                </li>
                 @endforeach
               </ul>
             </li>
-            <li class="dropdown profile"  title="Profile and more">
+            <li class="dropdown profile"  title="trans('app.profileTitle')">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <img alt="image" class="gravatar img-rounded" src="{{ Gravatar::src(Auth::user()->email) }}">
                 <span class="caret"></span>
@@ -95,14 +106,14 @@
                 <li>
                   <a href="/profile">
                     <i class="fa fa-user"></i>
-                    Profile
+                    {{ trans('app.profile') }}
                   </a>
                 </li>
                 <li class="divider"></li>
                 <li title="Logout">
                   <a href="/auth/logout">
                     <i class="fa fa-sign-out"></i>
-                    Logout
+                    {{ trans('app.logout') }}
                   </a>
                 </li>
               </ul>

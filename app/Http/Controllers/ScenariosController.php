@@ -38,7 +38,7 @@ class ScenariosController extends Controller
      */
     public function create(Request $request)
     {
-        $v['title'] = 'Add scenario';
+        $v['title'] = trans('app.scenario.new');
 
         if ($request->has('story_id'))
         {
@@ -77,11 +77,11 @@ class ScenariosController extends Controller
                 $this->scenarioDetail->insert($details);
             }
 
-            Notification::success('New scenario added!');
+            Notification::success(trans('messages.scenario.created'));
             return redirect()->route('projects.show', ['id' => $scenario->story->project_id, 'story_id' => $scenario->story_id]);
         }
 
-        Notification::error('Failed to add new scenario.');
+        Notification::error(trans('messages.scenario.createFailed'));
         return back()->withInput();
     }
 
@@ -104,7 +104,7 @@ class ScenariosController extends Controller
      */
     public function edit($id)
     {
-        $v['title'] = 'Edit scenario';
+        $v['title'] = trans('app.scenario.edit');
         $v['scenario'] = $this->scenario->findOrFail($id);
 
         return view('scenarios.edit', $v);
@@ -141,11 +141,11 @@ class ScenariosController extends Controller
                 $this->scenarioDetail->insert($details);
             }
 
-            Notification::success('Scenario edited!');
+            Notification::success(trans('messages.scenario.edited'));
             return redirect()->route('stories.show', ['id' => $scenario->story_id]);
         }
 
-        Notification::error('Failed to edit scenario.');
+        Notification::error(trans('messages.scenario.editFailed'));
         return back()->withInput();
     }
 
@@ -164,11 +164,11 @@ class ScenariosController extends Controller
 
             if ($scenario->delete())
             {
-                Notification::success('Scenario deleted.');
+                Notification::success(trans('messages.scenario.deleted'));
                 return redirect()->route('projects.show', ['id' => $scenario->story->project_id, 'story_id' => $scenario->story_id]);
             }
 
-            Notification::error('Failed to delete scenario #'.$id);
+            Notification::error(trans('messages.scenario.deleteFailed'));
         } catch (Exception $e) {
             Notification::error($e->getMessage());
         }

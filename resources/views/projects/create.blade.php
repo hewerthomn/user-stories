@@ -9,7 +9,9 @@
 
 @include('projects._form')
 
-<button type="submit" class="btn btn-block btn-lg btn-primary">Create project</button>
+<button type="submit" class="btn btn-block btn-lg btn-primary">
+    {{ trans('app.project.create') }}
+</button>
 
 {!! Form::close() !!}
 

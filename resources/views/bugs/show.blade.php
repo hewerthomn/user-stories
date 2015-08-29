@@ -10,7 +10,7 @@
 
 <div class="panel panel-default-outline">
     <div class="panel-heading">
-        <b class="text-muted h5">
+        <b class="text-muted h5" title="{{ trans('app.bug.uid') }}">
             {{ $bug->uid }}
         </b>
         <br>
@@ -21,30 +21,31 @@
     <div class="panel-body">
         @if (!empty($bug->version))
         <p>
-            <b>Version</b><br>
+            <b>{{ trans('app.bug.version') }}</b><br>
             {{ $bug->version }}
         </p>
         @endif
 
         <p>
-            <b>Pre-conditions</b><br>
+            <b>{{ trans('app.bug.pre_conditions') }}</b><br>
             {!! nl2br($bug->pre_conditions) !!}
         </p>
         <p>
-            <b>Steps to reproduce</b><br>
+            <b>{{ trans('app.bug.steps_to_reproduce') }}</b><br>
             {!! nl2br($bug->steps_to_reproduce) !!}
         </p>
         <p>
-            <b>Bug description</b><br>
+            <b>{{ trans('app.bug.description') }}</b><br>
             {!! nl2br($bug->description) !!}
         </p>
         <p>
-            <b>Desired situation</b><br>
+            <b>{{ trans('app.bug.desired_situation') }}</b><br>
             {!! nl2br($bug->desired_situation) !!}
         </p>
 
-
-        <a href="{{ route('bugs.edit', $bug->id) }}">Edit bug report</a>
+        <a href="{{ route('bugs.edit', $bug->id) }}">
+            {{ trans('app.bug.edit') }}
+        </a>
     </div>
 </div>
 

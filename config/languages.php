@@ -1,5 +1,5 @@
 <?php
 return [
     'en' => 'English',
-    'br' => 'Português'
+    'pt-BR' => 'Português'
 ];

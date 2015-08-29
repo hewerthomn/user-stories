@@ -3,8 +3,10 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="name">Project name</label>
-                    {!! Form::text('name', null, ['autofocus', 'placeholder' => 'Project name', 'class' => 'form-control']) !!}
+                    <label for="name">
+                        {{ trans('app.project.name') }}
+                    </label>
+                    {!! Form::text('name', null, ['autofocus', 'placeholder' => trans('app.project.name'), 'class' => 'form-control']) !!}
                     {!! $errors->first('name', '<span class="text-danger">:message</span>') !!}
                 </div>
             </div>
@@ -18,8 +20,10 @@
         </div>
 
         <div class="form-group">
-            <label for="about">About the project</label>
-            {!! Form::textarea('about', null, ['placeholder' => 'About the project', 'class' => 'form-control', 'rows' => 4]) !!}
+            <label for="about">
+                {{ trans('app.project.about') }}
+            </label>
+            {!! Form::textarea('about', null, ['placeholder' => trans('app.project.about'), 'class' => 'form-control', 'rows' => 4]) !!}
             {!! $errors->first('about', '<span class="text-danger">:message</span>') !!}
         </div>
     </div>

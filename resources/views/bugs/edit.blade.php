@@ -7,7 +7,9 @@
     <small>{{ $bug->uid }}</small>
     {!! Form::open(['class' => 'pull-right', 'method' => 'DELETE', 'route' => ['bugs.destroy', $bug->id]]) !!}
         {!! Form::hidden('project_id', $bug->project_id) !!}
-        <button type="submit" class="btn btn-link" onclick="return confirm('Confirm delete bug?');"><i class="fa fa-trash-o fa-lg text-danger"></i></button>
+        <button type="submit" class="btn btn-link" onclick="return confirm('{{ trans('messages.bug.confirmDelete') }}');">
+            <i class="fa fa-trash-o fa-lg text-danger"></i>
+        </button>
     {!! Form::close() !!}
 </h3>
 <hr>
@@ -16,7 +18,7 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
-        <label for="project_id">Project</label>
+        <label for="project_id">{{ trans('app.project.single') }}</label>
         <br>
         <a href="{{ route('projects.show', $bug->project_id) }}">
             {{ $bug->project->name }}
@@ -27,7 +29,9 @@
 
 @include('bugs._form')
 
-<button type="submit" class="btn btn-lg btn-block btn-primary">Save bug</button>
+<button type="submit" class="btn btn-lg btn-block btn-primary">
+    {{ trans('app.bug.save') }}
+</button>
 
 {!! Form::close() !!}
 

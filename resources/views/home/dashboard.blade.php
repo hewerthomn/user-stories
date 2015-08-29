@@ -16,45 +16,42 @@
 
 <div class="row">
     <div class="col-xs-6 col-sm-4 col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-body h5 text-center">
-                <br>
+        <div class="well text-center">
+            <i class="fa fa-rocket fa-4x text-danger"></i>
+            <br>
+            <h3>
                 {{ $totalProjects }}
                 <br>
-                <i class="fa fa-rocket text-danger"></i>
-                <small>{{ trans('app.projects') }}</small>
-                <br><br>
-            </div>
+                <small>{{ trans('app.project.plural') }}</small>
+            </h3>
         </div>
     </div>
     <div class="col-xs-6 col-sm-4 col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-body h5 text-center">
-                <br>
+        <div class="well text-center">
+            <i class="fa fa-file-text-o fa-4x text-primary"></i>
+            <br>
+            <h3>
                 {{ $totalStories }}
                 <br>
-                <i class="fa fa-file-text-o text-primary"></i>
-                <small>{{ trans('app.stories') }}</small>
-                <br><br>
-            </div>
+                <small>{{ trans('app.story.plural') }}</small>
+            </h3>
         </div>
     </div>
     <div class="col-xs-6 col-sm-4 col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-body h5 text-center">
-                <br>
+        <div class="well text-center">
+            <i class="fa fa-bug fa-4x text-success"></i>
+            <br>
+            <h3>
                 {{ $totalBugs }}
                 <br>
-                <i class="fa fa-bug text-success"></i>
-                <small>{{ trans('app.bugs') }}</small>
-                <br><br>
-            </div>
+                <small>{{ trans('app.bug.plural') }}</small>
+            </h3>
         </div>
     </div>
 </div>
 
 <fieldset>
-    <legend>{{ trans('app.projects') }}</legend>
+    <legend>{{ trans('app.project.plural') }}</legend>
 
     <div class="list-group">
         @foreach ($projects as $project)

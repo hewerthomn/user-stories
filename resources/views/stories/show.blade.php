@@ -20,19 +20,21 @@
     </div>
     <div class="panel-body">
         <p>
-            <b>As a</b><br>
+            <b>{{ trans('app.story.who') }}</b><br>
             {{ $story->who }}
         </p>
         <p>
-            <b>I want</b><br>
+            <b>{{ trans('app.story.what') }}</b><br>
             {{ $story->what }}
         </p>
         <p>
-            <b>So that</b><br>
+            <b>{{ trans('app.story.why') }}</b><br>
             {{ $story->why }}
         </p>
 
-        <a href="{{ route('stories.edit', $story->id) }}">Edit story</a>
+        <a href="{{ route('stories.edit', $story->id) }}">
+            {{ trans('app.story.edit') }}
+        </a>
     </div>
 </div>
 
@@ -40,9 +42,12 @@
 
 <fieldset>
     <legend>
-        Scenarios
+        {{ trans('app.scenario.plural') }}
+
         <small class="text-muted">#{{ $story->scenarios()->count()  }}</small>
-        <a href="{{ route('scenarios.create', ['story_id' => $story->id]) }}" class="btn btn-xs btn-success pull-right">Add scenario</a>
+        <a href="{{ route('scenarios.create', ['story_id' => $story->id]) }}" class="btn btn-xs btn-success pull-right">
+            {{ trans('app.scenario.new') }}
+        </a>
     </legend>
 
     <div class="row">
@@ -52,41 +57,47 @@
         <div class="col-md-6">
             <div class="panel panel-default-outline">
                 <div class="panel-heading">
-                    <b>Scenario {{ $i }}:</b>
+                    <b>
+                        {{ trans('app.scenario.single') }}
+                        {{ $i }}
+                        :
+                    </b>
                     {{ $scenario->title }}
                 </div>
                 <div class="panel-body">
                     <p>
-                        <b>Given</b><br>
+                        <b>{{ trans('app.scenario.given') }}</b><br>
                         {{ $scenario->given }}
 
                         @foreach ($scenario->detailSituation('given') as $d)
-                            <b>{{ ucfirst($d->condition) }}</b>
+                            <b>{{ trans("app.scenario.{$d->condition}") }}</b>
                             {{ $d->detail }}
                         @endforeach
                     </p>
 
                     <p>
-                        <b>When</b><br>
+                        <b>{{ trans('app.scenario.when') }}</b><br>
                         {{ $scenario->when }}
 
                         @foreach ($scenario->detailSituation('when') as $d)
-                            <b>{{ ucfirst($d->condition) }}</b>
+                            <b>{{ trans("app.scenario.{$d->condition}") }}</b>
                             {{ $d->detail }}
                         @endforeach
                     </p>
 
                     <p>
-                        <b>Then</b><br>
+                        <b>{{ trans('app.scenario.then') }}</b><br>
                         {{ $scenario->then }}
 
                         @foreach ($scenario->detailSituation('then') as $d)
-                            <b>{{ ucfirst($d->condition) }}</b>
+                            <b>{{ trans("app.scenario.{$d->condition}") }}</b>
                             {{ $d->detail }}
                         @endforeach
                     </p>
 
-                    <a href="{{ route('scenarios.edit', $scenario->id) }}">Edit scenario</a>
+                    <a href="{{ route('scenarios.edit', $scenario->id) }}">
+                        {{ trans('app.scenario.edit') }}
+                    </a>
                 </div>
             </div>
 

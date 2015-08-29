@@ -36,7 +36,7 @@ class StoriesController extends Controller
      */
     public function create(Request $request)
     {
-        $v['title'] = 'Add new story';
+        $v['title'] = trans('app.story.new');
         $v['projects'] = $this->project->lists('name', 'id');
 
         if ($request->has('project_id'))
@@ -64,11 +64,11 @@ class StoriesController extends Controller
 
         if ($story->save())
         {
-            Notification::success('New story added!');
+            Notification::success(trans('messages.story.created'));
             return redirect()->route('projects.show', ['id' => $story->project_id, 'story_id' => $story->id]);
         }
 
-        Notification::error('Failed to add new story.');
+        Notification::error(trans('messages.story.createFailed'));
         return back()->withInput();
     }
 
@@ -80,7 +80,7 @@ class StoriesController extends Controller
      */
     public function show($id)
     {
-        $v['title'] = 'Story #'.$id;
+        $v['title'] = trans('app.story.single').' #'.$id;
         $v['story'] = $this->story->findOrFail($id);
 
         return view('stories.show', $v);
@@ -94,7 +94,7 @@ class StoriesController extends Controller
      */
     public function edit($id)
     {
-        $v['title'] = 'Edit Story';
+        $v['title'] = trans('app.story.edit');
         $v['story'] = $this->story->findOrFail($id);
 
         return view('stories.edit', $v);
@@ -117,11 +117,11 @@ class StoriesController extends Controller
 
         if ($story->save())
         {
-            Notification::success('Story saved!');
+            Notification::success(trans('messages.story.edited'));
             return redirect()->route('projects.show', ['id' => $story->project_id, 'story_id' => $id]);
         }
 
-        Notification::error('Failed to add new story.');
+        Notification::error(trans('messages.story.editFailed'));
         return back()->withInput();
     }
 
@@ -138,11 +138,11 @@ class StoriesController extends Controller
         try {
             if($story->delete())
             {
-                Notification::success('Story deleted');
+                Notification::success(trans('messages.story.deleted'));
                 return redirect()->route('projects.show', $request->input('project_id'));
             }
 
-            Notification::error('Failed to delete story');
+            Notification::error(trans('messages.story.deleteFailed'));
         } catch (Exception $e) {
             Notification::error($e->getMessage());
         }

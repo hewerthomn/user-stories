@@ -25,7 +25,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $v['title'] = 'Projects';
+        $v['title'] = trans('app.project.plural');
         $projects = $this->project;
 
         $v['projects'] = $projects->get();
@@ -40,7 +40,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        $v['title'] = 'Create project';
+        $v['title'] = trans('app.project.new');
 
         return view('projects.create', $v);
     }
@@ -60,11 +60,11 @@ class ProjectsController extends Controller
 
         if ($project->save())
         {
-            Notification::success('Project created!');
+            Notification::success(trans('messages.project.created'));
             return redirect()->route('projects.show', $project->id);
         }
 
-        Notification::error('Failed to create project.');
+        Notification::error(trans('messages.project.createFailed'));
         return back()->withInput();
     }
 
@@ -76,7 +76,7 @@ class ProjectsController extends Controller
      */
     public function show(Request $request, $id)
     {
-        $v['title'] = 'Project #'.$id;
+        $v['title'] = trans('app.project.single').'#'.$id;
         $v['project'] = $this->project->findOrFail($id);
 
         if ($request->has('story_id'))
@@ -95,7 +95,7 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-        $v['title'] = 'Edit Project';
+        $v['title'] = trans('app.project.edit');
         $v['project'] = $this->project->findOrFail($id);
 
         return view('projects.edit', $v);
@@ -117,11 +117,11 @@ class ProjectsController extends Controller
 
         if ($project->save())
         {
-            Notification::success('Project created!');
+            Notification::success(trans('messages.project.edited'));
             return redirect()->route('projects.show', $project->id);
         }
 
-        Notification::error('Failed to create project.');
+        Notification::error(trans('messages.project.editFailed'));
         return back()->withInput();
     }
 

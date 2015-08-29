@@ -1,8 +1,8 @@
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="form-group">
-            <label for="title">Scenario title</label>
-            {!! Form::text('title', null, ['autofocus', 'placeholder' => 'Scenario title', 'class' => 'form-control input-lg']) !!}
+            <label for="title">{{ trans('app.scenario.title') }}</label>
+            {!! Form::text('title', null, ['autofocus', 'placeholder' => trans('app.scenario.title'), 'class' => 'form-control input-lg']) !!}
             {!! $errors->first('title', '<span class="text-danger">:message</span>') !!}
         </div>
     </div>
@@ -12,16 +12,18 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <label for="given"><b>Given</b></label>
+                <label for="given"><b>
+                    {{ trans('app.scenario.given') }}
+                </b></label>
 
                 <div class="btn-group btn-group-xs pull-right">
-                    <button type="button" class="btn btn-default btn-add-conditional" data-situation="given" data-condition="and">+ AND</button>
-                    <button type="button" class="btn btn-default btn-add-conditional" data-situation="given" data-condition="or">+ OR</button>
+                    <button type="button" class="btn btn-default btn-add-conditional" data-situation="given" data-condition="and">+ {{ trans('app.scenario.and') }}</button>
+                    <button type="button" class="btn btn-default btn-add-conditional" data-situation="given" data-condition="or">+ {{ trans('app.scenario.or') }}</button>
                 </div>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    {!! Form::textarea('given', null, ['placeholder' => 'Given', 'class' => 'form-control', 'rows' => 2]) !!}
+                    {!! Form::textarea('given', null, ['placeholder' => trans('app.scenario.given'), 'class' => 'form-control', 'rows' => 2]) !!}
                     {!! $errors->first('given', '<span class="text-danger">:message</span>') !!}
                 </div>
                 <div class="form-group">
@@ -35,7 +37,9 @@
                                         <label class="given-{{ $detail->id }}"><b>{{ $detail->condition }}</b></label>
                                         <input type="text" class="form-control" name="details[{{ $detail->id }}][detail]" value="{{ $detail->detail }}" required>
                                         <div class="input-group-btn">
-                                            <button type="button" class="btn btn-xs btn-default text-danger btn-remove-conditional"><i class="fa fa-trash-o text-danger"></i></button>
+                                            <button type="button" class="btn btn-xs btn-default text-danger btn-remove-conditional">
+                                                <i class="fa fa-trash-o text-danger"></i>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -49,16 +53,18 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <label for="when"><b>When</b></label>
+                <label for="when"><b>
+                    {{ trans('app.scenario.when') }}
+                </b></label>
 
                 <div class="btn-group btn-group-xs pull-right">
-                    <button type="button" class="btn btn-default btn-add-conditional" data-situation="when" data-condition="and">+ AND</button>
-                    <button type="button" class="btn btn-default btn-add-conditional" data-situation="when" data-condition="or">+ OR</button>
+                    <button type="button" class="btn btn-default btn-add-conditional" data-situation="when" data-condition="and">+ {{ trans('app.scenario.and') }}</button>
+                    <button type="button" class="btn btn-default btn-add-conditional" data-situation="when" data-condition="or">+ {{ trans('app.scenario.or') }}</button>
                 </div>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    {!! Form::textarea('when', null, ['placeholder' => 'When', 'class' => 'form-control', 'rows' => 2]) !!}
+                    {!! Form::textarea('when', null, ['placeholder' => trans('app.scenario.when'), 'class' => 'form-control', 'rows' => 2]) !!}
                     {!! $errors->first('when', '<span class="text-danger">:message</span>') !!}
                 </div>
 
@@ -85,16 +91,18 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <label for="then"><b>Then</b></label>
+                <label for="then"><b>
+                    {{ trans('app.scenario.then') }}
+                </b></label>
 
                 <div class="btn-group btn-group-xs pull-right">
-                    <button type="button" class="btn btn-default btn-add-conditional" data-situation="then" data-condition="and">+ AND</button>
-                    <button type="button" class="btn btn-default btn-add-conditional" data-situation="then" data-condition="or">+ OR</button>
+                    <button type="button" class="btn btn-default btn-add-conditional" data-situation="then" data-condition="and">+ {{ trans('app.scenario.and') }}</button>
+                    <button type="button" class="btn btn-default btn-add-conditional" data-situation="then" data-condition="or">+ {{ trans('app.scenario.or') }}</button>
                 </div>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    {!! Form::textarea('then', null, ['placeholder' => 'Then', 'class' => 'form-control', 'rows' => 2]) !!}
+                    {!! Form::textarea('then', null, ['placeholder' => trans('app.scenario.then'), 'class' => 'form-control', 'rows' => 2]) !!}
                     {!! $errors->first('then', '<span class="text-danger">:message</span>') !!}
                 </div>
 
