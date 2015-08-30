@@ -63,7 +63,7 @@ class ProjectsController extends Controller
         if ($project->save())
         {
             Notification::success(trans('messages.project.created'));
-            return redirect()->route('projects.show', $project->id);
+            return redirect()->route('projects.show', $project->uid);
         }
 
         Notification::error(trans('messages.project.createFailed'));
