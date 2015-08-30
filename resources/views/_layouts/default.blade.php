@@ -39,16 +39,25 @@
           </a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 {{ trans('app.project.plural') }}
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
+                @foreach (App\Project::get() as $project)
+                <li class="">
+                  <a href="{{ route('projects.show', $project->uid) }}">
+                    {{ $project->name }}
+                  </a>
+                </li>
+                @endforeach
               </ul>
             </li>
+          </ul>
 
+          <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-lg fa-plus"></i>
