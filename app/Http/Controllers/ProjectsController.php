@@ -8,7 +8,7 @@ use App\Project;
 use App\Story;
 use App\Http\Requests\ProjectStoreRequest;
 use App\Http\Controllers\Controller;
-use Notification;
+use Auth, Notification;
 
 class ProjectsController extends Controller
 {
@@ -57,6 +57,7 @@ class ProjectsController extends Controller
         $project->name = $request->input('name');
         $project->url = $request->input('url');
         $project->about = $request->input('about');
+        $project->owner_id = Auth::user()->id;
 
         if ($project->save())
         {
