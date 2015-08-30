@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Story;
 use App\Project;
+use App\StatusStory;
 use App\Http\Requests\StoryStoreRequest;
 use App\Http\Requests\StoryUpdateRequest;
 use App\Http\Controllers\Controller;
@@ -13,10 +14,11 @@ use Notification;
 
 class StoriesController extends Controller
 {
-    public function __construct(Story $story, Project $project)
+    public function __construct(Story $story, Project $project, StatusStory $statusStory)
     {
         $this->story = $story;
         $this->project = $project;
+        $this->statusStory = $statusStory;
     }
 
     /**
@@ -38,6 +40,7 @@ class StoriesController extends Controller
     {
         $v['title'] = trans('app.story.new');
         $v['projects'] = $this->project->lists('name', 'id');
+        $v['status'] = $this->statusStory->selectList();
 
         if ($request->has('project_id'))
         {
@@ -61,6 +64,7 @@ class StoriesController extends Controller
         $story->who = $request->input('who');
         $story->what = $request->input('what');
         $story->why = $request->input('why');
+        $story->status_id = $request->input('status_id');
 
         if ($story->save())
         {
@@ -96,6 +100,7 @@ class StoriesController extends Controller
     {
         $v['title'] = trans('app.story.edit');
         $v['story'] = $this->story->findOrFail($id);
+        $v['status'] = $this->statusStory->selectList();
 
         return view('stories.edit', $v);
     }
@@ -114,6 +119,7 @@ class StoriesController extends Controller
         $story->who = $request->input('who');
         $story->what = $request->input('what');
         $story->why = $request->input('why');
+        $story->status_id = $request->input('status_id');
 
         if ($story->save())
         {

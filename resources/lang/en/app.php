@@ -42,6 +42,7 @@ return [
         'whatPlaceholder' => 'The action',
         'why' => 'Why',
         'whyPlaceholder' => 'The reason',
+        'status' => 'Status',
     ],
 
     'scenario' => [

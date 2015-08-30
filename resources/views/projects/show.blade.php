@@ -63,6 +63,10 @@
                 <span class="text-primary">
                     {{ $s->title }}
                 </span>
+                <br>
+                <small class="text-muted">
+                    {{ $s->status->name }}
+                </small>
             </a>
             @endforeach
         </div>

@@ -10,13 +10,16 @@
 
 <div class="panel panel-default-outline">
     <div class="panel-heading">
-        <b class="text-muted h5">
+        <b class="text-muted">
             {{ $story->uid }}
         </b>
-        <br>
         <span class="h6">
             {{ $story->title }}
         </span>
+        <br>
+        <small class="text-muted">
+            {{ $story->status->name }}
+        </small>
     </div>
     <div class="panel-body">
         <p>

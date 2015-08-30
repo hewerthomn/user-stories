@@ -42,6 +42,7 @@ return [
         'whatPlaceholder' => 'A ação',
         'why' => 'Porquê',
         'whyPlaceholder' => 'O motivo',
+        'status' => 'Situação',
     ],
 
     'scenario' => [

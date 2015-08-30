@@ -23,6 +23,11 @@ class Story extends Model
         return $this->hasMany(Scenario::class);
     }
 
+    public function status()
+    {
+        return $this->belongsTo(StatusStory::class);
+    }
+
     public function link($link)
     {
         switch($link)

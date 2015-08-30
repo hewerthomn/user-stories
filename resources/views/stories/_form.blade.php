@@ -23,3 +23,13 @@
         </div>
     </div>
 </div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-group">
+            <label for="status_id">{{ trans('app.story.status') }}</label>
+            {!! Form::select('status_id', $status, empty($story) ? App\StatusStory::TODO : null, ['class' => 'form-control']) !!}
+            {!! $errors->first('status_id', '<span class="text-danger">:message</span>') !!}
+        </div>
+    </div>
+</div>
