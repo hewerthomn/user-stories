@@ -46,17 +46,17 @@
 
 							<div class="form-group">
 								<label for="email">Email</label>
-								<input autofocus type="email" name="email" class="form-control" tabindex="1" value="{{ old('email') }}">
+								<input autofocus type="email" name="email" class="form-control" placeholder="Your email" tabindex="1" value="{{ old('email') }}" required>
 							</div>
 
 							<div>
 								<label for="password">Password</label>
-								<input type="password" name="password" class="form-control" tabindex="2" id="password">
+								<input type="password" name="password" class="form-control" placeholder="Your password" tabindex="2" id="password" required>
 							</div>
 
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="remember" tabindex="4"> Remember Me
+									<input type="checkbox" name="remember" tabindex="4"> Remember me
 								</label>
 							</div>
 
