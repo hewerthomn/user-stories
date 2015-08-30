@@ -20,21 +20,18 @@ class HomeController extends Controller
     }
 
     /**
-     * dashboard
+     * index
      *
      * @return Response
      */
-    public function dashboard()
+    public function index()
     {
-        $v['title'] = trans('app.dashboard');
+        $v['title'] = trans('app.home');
 
-        $v['totalProjects'] = $this->project->count();
-        $v['totalStories'] = $this->story->count();
-        $v['totalBugs'] = $this->bug->count();
+        $v['favoritedProjects'] = $this->project->get();
+        $v['myProjects'] = $this->project->get();
 
-        $v['projects'] = $this->project->get();
-
-        return view('home.dashboard', $v);
+        return view('home.index', $v);
     }
 
     public function profile()

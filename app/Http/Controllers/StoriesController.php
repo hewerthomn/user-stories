@@ -36,15 +36,15 @@ class StoriesController extends Controller
      *
      * @return Response
      */
-    public function create(Request $request)
+    public function create(Request $request, $project_uid = null)
     {
         $v['title'] = trans('app.story.new');
-        $v['projects'] = $this->project->lists('name', 'id');
+        $v['projects'] = $this->project->selectList();
         $v['status'] = $this->statusStory->selectList();
 
-        if ($request->has('project_id'))
+        if ($project_uid)
         {
-            $v['project'] = $this->project->findOrFail($request->input('project_id'));
+            $v['project'] = $this->project->findByUid($project_uid);
         }
 
         return view('stories.create', $v);
@@ -58,8 +58,11 @@ class StoriesController extends Controller
      */
     public function store(StoryStoreRequest $request)
     {
+        $project = $this->project->findByUid($request->input('project_uid'));
+
         $story = new Story;
-        $story->project_id = $request->input('project_id');
+        $story->project_id = $project->id;
+        $story->uid = str_random(12);
         $story->title = $request->input('title');
         $story->who = $request->input('who');
         $story->what = $request->input('what');
@@ -69,7 +72,7 @@ class StoriesController extends Controller
         if ($story->save())
         {
             Notification::success(trans('messages.story.created'));
-            return redirect()->route('projects.show', ['id' => $story->project_id, 'story_id' => $story->id]);
+            return redirect()->route('stories.show', ['uid' => $story->uid]);
         }
 
         Notification::error(trans('messages.story.createFailed'));
@@ -82,10 +85,11 @@ class StoriesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($uid)
     {
-        $v['title'] = trans('app.story.single').' #'.$id;
-        $v['story'] = $this->story->findOrFail($id);
+        $v['story'] = $this->story->findByUid($uid);
+
+        $v['title'] = trans('app.story.single');
 
         return view('stories.show', $v);
     }
@@ -96,10 +100,11 @@ class StoriesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($uid)
     {
         $v['title'] = trans('app.story.edit');
-        $v['story'] = $this->story->findOrFail($id);
+        $v['story'] = $this->story->findByUid($uid);
+        $v['project'] = $v['story']->project;
         $v['status'] = $this->statusStory->selectList();
 
         return view('stories.edit', $v);
@@ -112,9 +117,9 @@ class StoriesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(StoryUpdateRequest $request, $id)
+    public function update(StoryUpdateRequest $request, $uid)
     {
-        $story = $this->story->findOrFail($id);
+        $story = $this->story->findByUid($uid);
         $story->title = $request->input('title');
         $story->who = $request->input('who');
         $story->what = $request->input('what');
@@ -124,7 +129,7 @@ class StoriesController extends Controller
         if ($story->save())
         {
             Notification::success(trans('messages.story.edited'));
-            return redirect()->route('projects.show', ['id' => $story->project_id, 'story_id' => $id]);
+            return redirect()->route('stories.show', ['uid' => $story->uid]);
         }
 
         Notification::error(trans('messages.story.editFailed'));

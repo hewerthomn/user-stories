@@ -14,11 +14,12 @@ class CreateScenariosTable extends Migration
     {
         Schema::create('scenarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('given');
-            $table->string('when');
-            $table->string('then');
+            $table->text('title');
+            $table->text('given');
+            $table->text('when');
+            $table->text('then');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->integer('story_id')->unsigned()->index();
             $table->foreign('story_id')->references('id')->on('stories');

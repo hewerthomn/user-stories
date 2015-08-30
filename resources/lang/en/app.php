@@ -6,7 +6,7 @@
 
 return [
     'language' => 'Language',
-    'dashboard' => 'Dashboard',
+    'home' => 'Home',
     'logout' => 'Logout',
     'profile' => 'Profile',
     'profileTitle' => 'Profile and more',
@@ -24,6 +24,8 @@ return [
         'empty' => 'None project to show.',
         'name' => 'Project name',
         'about' => 'About the project',
+        'favorited' => 'Favorited projects',
+        'my' => 'My projects',
     ],
 
     'story' => [
@@ -76,5 +78,11 @@ return [
         'steps_to_reproduce' => 'Steps to reproduce',
         'description' => 'Description',
         'desired_situation' => 'Desired situation',
+    ],
+
+    'status' => [
+        '1' => 'To do',
+        '2' => 'Doing',
+        '3' => 'Done',
     ]
 ];

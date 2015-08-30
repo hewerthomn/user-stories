@@ -6,16 +6,18 @@ use Illuminate\Http\Request;
 
 use App\Project;
 use App\Story;
+use App\StatusStory;
 use App\Http\Requests\ProjectStoreRequest;
 use App\Http\Controllers\Controller;
 use Auth, Notification;
 
 class ProjectsController extends Controller
 {
-    public function __construct(Project $project, Story $story)
+    public function __construct(Project $project, Story $story, StatusStory $statusStory)
     {
         $this->project = $project;
         $this->story = $story;
+        $this->statusStory = $statusStory;
     }
 
     /**
@@ -55,8 +57,7 @@ class ProjectsController extends Controller
     {
         $project = new Project;
         $project->name = $request->input('name');
-        $project->url = $request->input('url');
-        $project->about = $request->input('about');
+        $project->uid = str_random(12);
         $project->owner_id = Auth::user()->id;
 
         if ($project->save())
@@ -75,15 +76,12 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show(Request $request, $id)
+    public function show(Request $request, $uid)
     {
-        $v['title'] = trans('app.project.single').'#'.$id;
-        $v['project'] = $this->project->findOrFail($id);
+        $v['project'] = $this->project->findByUid($uid);
+        $v['status'] = $this->statusStory->get();
 
-        if ($request->has('story_id'))
-        {
-            $v['story'] = $this->story->findOrFail($request->input('story_id'));
-        }
+        $v['title'] = trans('app.project.single');
 
         return view('projects.show', $v);
     }
@@ -94,10 +92,10 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($uid)
     {
         $v['title'] = trans('app.project.edit');
-        $v['project'] = $this->project->findOrFail($id);
+        $v['project'] = $this->project->findByUid($uid);
 
         return view('projects.edit', $v);
     }
@@ -113,13 +111,11 @@ class ProjectsController extends Controller
     {
         $project = $this->project->findOrFail($id);
         $project->name = $request->input('name');
-        $project->url = $request->input('url');
-        $project->about = $request->input('about');
 
         if ($project->save())
         {
             Notification::success(trans('messages.project.edited'));
-            return redirect()->route('projects.show', $project->id);
+            return redirect()->route('projects.show', $project->uid);
         }
 
         Notification::error(trans('messages.project.editFailed'));

@@ -36,14 +36,10 @@ class ScenariosController extends Controller
      *
      * @return Response
      */
-    public function create(Request $request)
+    public function create(Request $request, $story_id)
     {
         $v['title'] = trans('app.scenario.new');
-
-        if ($request->has('story_id'))
-        {
-            $v['story'] = $this->story->findOrFail($request->input('story_id'));
-        }
+        $v['story'] = $this->story->findByUid($story_id);
 
         return view('scenarios.create', $v);
     }
@@ -78,7 +74,7 @@ class ScenariosController extends Controller
             }
 
             Notification::success(trans('messages.scenario.created'));
-            return redirect()->route('projects.show', ['id' => $scenario->story->project_id, 'story_id' => $scenario->story_id]);
+            return redirect()->route('stories.show', ['uid' => $scenario->story->uid]);
         }
 
         Notification::error(trans('messages.scenario.createFailed'));
@@ -102,10 +98,11 @@ class ScenariosController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($story_id, $id)
     {
         $v['title'] = trans('app.scenario.edit');
         $v['scenario'] = $this->scenario->findOrFail($id);
+        $v['story'] = $v['scenario']->story;
 
         return view('scenarios.edit', $v);
     }
@@ -142,7 +139,7 @@ class ScenariosController extends Controller
             }
 
             Notification::success(trans('messages.scenario.edited'));
-            return redirect()->route('stories.show', ['id' => $scenario->story_id]);
+            return redirect()->route('stories.show', ['uid' => $scenario->story->uid]);
         }
 
         Notification::error(trans('messages.scenario.editFailed'));

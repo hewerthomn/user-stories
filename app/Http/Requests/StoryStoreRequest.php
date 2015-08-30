@@ -24,7 +24,7 @@ class StoryStoreRequest extends Request
     public function rules()
     {
         return [
-            'project_id' => 'required',
+            'project_uid' => 'required',
             'title' => 'required',
             'who' => 'required',
             'what' => 'required',

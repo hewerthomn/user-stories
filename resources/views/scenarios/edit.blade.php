@@ -14,32 +14,6 @@
 <hr>
 
 {!! Form::model($scenario, ['method' => 'PUT', 'route' => ['scenarios.update', $scenario->id]]) !!}
-<div class="panel panel-default">
-    <div class="panel-body">
-        <div class="form-group">
-            <label for="project_id">
-                {{ trans('app.project.single') }}
-            </label>
-            <br>
-            <a href="{{ route('projects.show', $scenario->story->project->id) }}">
-                {{ $scenario->story->project->name }}
-            </a>
-        </div>
-
-        <div class="form-group">
-            <label for="story_id">
-                {{ trans('app.story.single') }}
-            </label>
-            <p>
-                <b class="text-muted">{{ $scenario->story->uid }}</b>
-                <a href="{{ route('stories.show', ['id' => $scenario->story->id]) }}">
-                    {{ $scenario->story->title }}
-                </a>
-                {!! Form::hidden('story_id', $scenario->story->id) !!}
-            </p>
-        </div>
-    </div>
-</div>
 
 @include('scenarios._form')
 

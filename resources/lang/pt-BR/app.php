@@ -6,7 +6,7 @@
 
 return [
     'language' => 'Idioma',
-    'dashboard' => 'Painel de controle',
+    'home' => 'Início',
     'logout' => 'Sair',
     'profile' => 'Perfil',
     'profileTitle' => 'Perfil e mais',
@@ -24,6 +24,8 @@ return [
         'name' => 'Nome do projeto',
         'about' => 'Sobre o projeto',
         'empty' => 'Nenhum projeto para exibir.',
+        'favorited' => 'Projetos favoritos',
+        'my' => 'Meus projetos',
     ],
 
     'story' => [
@@ -76,5 +78,11 @@ return [
         'steps_to_reproduce' => 'Passos para reproduzir',
         'description' => 'Descrição',
         'desired_situation' => 'Situação desejada',
+    ],
+
+    'status' => [
+        '1' => 'Fazer',
+        '2' => 'Fazendo',
+        '3' => 'Feito',
     ]
 ];

@@ -1,6 +1,29 @@
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="form-group">
+            <label for="project_id">
+                {{ trans('app.project.single') }}
+            </label>
+            <br>
+            <a href="{{ route('projects.show', $story->project->uid) }}">
+                {{ $story->project->name }}
+            </a>
+        </div>
+        <div class="form-group">
+            <label for="story_id">
+                {{ trans('app.story.single') }}
+            </label><br>
+            <a href="{{ route('stories.show', ['id' => $story->uid]) }}">
+                {{ $story->title }}
+            </a>
+            {!! Form::hidden('story_id', $story->id) !!}
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-group">
             <label for="title">{{ trans('app.scenario.title') }}</label>
             {!! Form::text('title', null, ['autofocus', 'placeholder' => trans('app.scenario.title'), 'class' => 'form-control input-lg']) !!}
             {!! $errors->first('title', '<span class="text-danger">:message</span>') !!}

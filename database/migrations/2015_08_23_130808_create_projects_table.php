@@ -14,10 +14,13 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('uid')->index();
             $table->string('name');
-            $table->text('about')->nullable();
-            $table->string('url')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->integer('owner_id')->unsigned()->index();
+            $table->foreign('owner_id')->references('id')->on('users');
         });
     }
 

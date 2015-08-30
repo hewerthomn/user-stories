@@ -14,14 +14,19 @@ class CreateStoriesTable extends Migration
     {
         Schema::create('stories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('who');
-            $table->string('what');
-            $table->string('why');
+            $table->string('uid')->index();
+            $table->text('title');
+            $table->text('who');
+            $table->text('what');
+            $table->text('why');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->integer('project_id')->unsigned()->index();
             $table->foreign('project_id')->references('id')->on('projects');
+
+            $table->integer('status_id')->nullable()->unsigned()->index();
+            $table->foreign('status_id')->references('id')->on('status');
         });
     }
 

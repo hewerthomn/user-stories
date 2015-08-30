@@ -4,8 +4,8 @@
 
 <h3>
     {{ $title }}
-    <small>{{ $story->uid }}</small>
-    {!! Form::open(['class' => 'pull-right', 'method' => 'DELETE', 'route' => ['stories.destroy', $story->id]]) !!}
+
+    {!! Form::open(['class' => 'pull-right', 'method' => 'DELETE', 'route' => ['stories.destroy', $story->uid]]) !!}
         {!! Form::hidden('project_id', $story->project_id) !!}
         <button type="submit" class="btn btn-link" onclick="return confirm('{{ trans('messages.story.confirmDelete') }}');">
             <i class="fa fa-trash-o fa-lg text-danger"></i>
@@ -14,18 +14,7 @@
 </h3>
 <hr>
 
-{!! Form::model($story, ['method' => 'PUT', 'route' => ['stories.update', $story->id]]) !!}
-
-<div class="panel panel-default">
-    <div class="panel-body">
-        <label for="project_id">{{ trans('app.project.single') }}</label>
-        <br>
-        <a href="{{ route('projects.show', $story->project_id) }}">
-            {{ $story->project->name }}
-        </a>
-        <input type="hidden" name="project_id" value="{{ $story->project_id }}">
-    </div>
-</div>
+{!! Form::model($story, ['method' => 'PUT', 'route' => ['stories.update', $story->uid]]) !!}
 
 @include('stories._form')
 

@@ -16,7 +16,7 @@ class CreateScenarioDetailsTable extends Migration
             $table->increments('id');
             $table->string('situation');
             $table->string('condition');
-            $table->string('detail');
+            $table->text('detail');
             $table->timestamps();
 
             $table->integer('scenario_id')->unsigned()->index();

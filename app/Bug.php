@@ -3,15 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Bug extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'bugs';
 
-    public function getUidAttribute($value)
-    {
-        return 'B' . $this->project_id . str_pad($this->id, 3, '0', STR_PAD_LEFT);
-    }
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function project()
     {
