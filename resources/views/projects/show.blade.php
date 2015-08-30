@@ -9,13 +9,14 @@
 </h3>
 <hr>
 
+@if ($project->stories()->count() > 0)
 <div class="well well-sm">
     <div class="form-group">
         <div class="input-group">
             <div class="input-group-addon">
                 <i class="fa fa-search"></i>
             </div>
-            <input autofocus type="search" placeholder="Search story or scenario" class="form-control">
+            <input autofocus type="search" placeholder="{{ trans('app.story.filter') }}" class="form-control">
             <div class="input-group-btn">
                 <a href="{{ route('stories.create', ['project_id' => $project->uid]) }}" class="btn btn-success">
                     <i class="fa fa-plus"></i>
@@ -25,6 +26,7 @@
         </div>
     </div>
 </div>
+@endif
 
 @if ($project->stories()->count() === 0)
 <h4 class="text-primary well text-center">
@@ -37,13 +39,12 @@
         {{ trans('app.story.new') }}
     </a>
 </h4>
-@endif
-
+@else
 <div class="row">
     @foreach ($status as $s)
         @include('projects._story', ['status' => $s])
     @endforeach
 </div>
-
+@endif
 
 @stop
